@@ -26,7 +26,7 @@ public class GameTest {
 
 
     @Test
-    public void should_get_the_success_status_when_guess_input_is_correct() throws Exception {
+    public void should_get_the_4A0B_when_guess_input_is_correct() throws Exception {
 
         //given
 //        excuteSuccessGuess();
@@ -36,6 +36,144 @@ public class GameTest {
         assertThat(guess.getResult(), is("4A0B"));
 
     }
+    @Test
+    public void should_get_the_3A0B_when_guess_input_is_correct() throws Exception {
 
+        //given
+//        excuteSuccessGuess();
+        GuessResult guess = game.guess(Answer.createAnswer("1 2 3 7"));
+        //when
+        //then
+        assertThat(guess.getResult(), is("3A0B"));
+
+    }
+
+    @Test
+    public void should_get_the_0A2B_when_guess_input_is_correct() throws Exception {
+
+        //given
+//        excuteSuccessGuess();
+        GuessResult guess = game.guess(Answer.createAnswer("8 6 4 3"));
+        //when
+        //then
+        assertThat(guess.getResult(), is("0A2B"));
+
+    }
+
+    @Test
+    public void should_get_the_0A1B_when_guess_input_is_correct() throws Exception {
+
+        //given
+//        excuteSuccessGuess();
+        GuessResult guess = game.guess(Answer.createAnswer("8 4 5 9"));
+        //when
+        //then
+        assertThat(guess.getResult(), is("0A1B"));
+
+    }
+    @Test
+    public void should_get_the_0A3B_when_guess_input_is_correct() throws Exception {
+
+        //given
+//        excuteSuccessGuess();
+        GuessResult guess = game.guess(Answer.createAnswer("2 3 4 9"));
+        //when
+        //then
+        assertThat(guess.getResult(), is("0A3B"));
+
+    }
+
+    @Test
+    public void should_get_the_0A4B_when_guess_input_is_correct() throws Exception {
+
+        //given
+//        excuteSuccessGuess();
+        GuessResult guess = game.guess(Answer.createAnswer("2 3 4 1"));
+        //when
+        //then
+        assertThat(guess.getResult(), is("0A4B"));
+
+    }
+    @Test
+    public void should_get_the_2A1B_when_guess_input_is_correct() throws Exception {
+
+        //given
+//        excuteSuccessGuess();
+        GuessResult guess = game.guess(Answer.createAnswer("1 2 7 3"));
+        //when
+        //then
+        assertThat(guess.getResult(), is("2A1B"));
+
+    }
+    @Test
+    public void should_get_the_2A2B_when_guess_input_is_correct() throws Exception {
+
+        //given
+//        excuteSuccessGuess();
+        GuessResult guess = game.guess(Answer.createAnswer("1 2 4 3"));
+        //when
+        //then
+        assertThat(guess.getResult(), is("2A2B"));
+
+    }
+
+    @Test
+    public void should_get_the_2A0B_when_guess_input_is_correct() throws Exception {
+
+        //given
+//        excuteSuccessGuess();
+        GuessResult guess = game.guess(Answer.createAnswer("1 2 7 8"));
+        //when
+        //then
+        assertThat(guess.getResult(), is("2A0B"));
+
+    }
+
+    @Test
+    public void should_get_the_1A2B_when_guess_input_is_correct() throws Exception {
+
+        //given
+//        excuteSuccessGuess();
+        GuessResult guess = game.guess(Answer.createAnswer("1 6 4 3"));
+        //when
+        //then
+        assertThat(guess.getResult(), is("1A2B"));
+
+    }
+
+    @Test
+    public void should_get_the_1A1B_when_guess_input_is_correct() throws Exception {
+
+        //given
+//        excuteSuccessGuess();
+        GuessResult guess = game.guess(Answer.createAnswer("1 6 7 3"));
+        //when
+        //then
+        assertThat(guess.getResult(), is("1A1B"));
+
+    }
+    @Test
+    public void should_get_the_1A3B_when_guess_input_is_correct() throws Exception {
+
+        //given
+//        excuteSuccessGuess();
+        GuessResult guess = game.guess(Answer.createAnswer("1 3 4 2"));
+        //when
+        //then
+        assertThat(guess.getResult(), is("1A3B"));
+
+    }
+
+    @Test
+    public void should_get_the_1A0B_when_guess_input_is_correct() throws Exception {
+
+        //given
+//        excuteSuccessGuess();
+        GuessResult guess = game.guess(Answer.createAnswer("1 5 6 7"));
+        //when
+        //then
+        assertThat(guess.getResult(), is("1A0B"));
+
+    }
 
 }
