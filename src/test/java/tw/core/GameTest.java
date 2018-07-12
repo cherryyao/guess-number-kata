@@ -4,11 +4,16 @@ package tw.core;/*
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import tw.core.exception.OutOfGuessCountException;
 import tw.core.generator.AnswerGenerator;
 import tw.core.model.GuessResult;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
+import static org.junit.jupiter.api.Assertions.fail;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -36,144 +41,47 @@ public class GameTest {
         assertThat(guess.getResult(), is("4A0B"));
 
     }
+//
+
     @Test
-    public void should_get_the_3A0B_when_guess_input_is_correct() throws Exception {
+    public void should_get_FAIL_when_guess_input_is_over_max_count() throws Exception {
 
         //given
 //        excuteSuccessGuess();
-        GuessResult guess = game.guess(Answer.createAnswer("1 2 3 7"));
         //when
+        try {
+            GuessResult guess1 = game.guess(Answer.createAnswer("1 5 6 7"));
+            GuessResult guess2 = game.guess(Answer.createAnswer("1 5 6 7"));
+            GuessResult guess3 = game.guess(Answer.createAnswer("1 5 6 7"));
+            GuessResult guess4 = game.guess(Answer.createAnswer("1 5 6 7"));
+            GuessResult guess5 = game.guess(Answer.createAnswer("1 5 6 7"));
+            GuessResult guess6 = game.guess(Answer.createAnswer("1 5 6 7"));
+            GuessResult guess7 = game.guess(Answer.createAnswer("1 5 6 7"));
+        }
         //then
-        assertThat(guess.getResult(), is("3A0B"));
+        catch (OutOfGuessCountException e){
+            System.out.print("Guess count cant over 6!");
+        }
 
     }
 
     @Test
-    public void should_get_the_0A2B_when_guess_input_is_correct() throws Exception {
-
-        //given
-//        excuteSuccessGuess();
-        GuessResult guess = game.guess(Answer.createAnswer("8 6 4 3"));
-        //when
-        //then
-        assertThat(guess.getResult(), is("0A2B"));
-
+    public void should_get_histroy_when_guess_input_is_1567()throws Exception{
+        List<GuessResult> guessResults = new ArrayList<>();
+        GuessResult guess1 = game.guess(Answer.createAnswer("1 5 6 7"));
+        GuessResult guess2 = game.guess(Answer.createAnswer("1 5 6 7"));
+        guessResults.add(guess1);
+        guessResults.add(guess2);
+        assertThat(game.guessHistory(),is(guessResults));
     }
 
     @Test
-    public void should_get_the_0A1B_when_guess_input_is_correct() throws Exception {
-
-        //given
-//        excuteSuccessGuess();
-        GuessResult guess = game.guess(Answer.createAnswer("8 4 5 9"));
-        //when
-        //then
-        assertThat(guess.getResult(), is("0A1B"));
-
+    public void shoule_get_checkStatus_is_success_when_guess_use_CORRECT_RESULT_STANDAR() throws Exception{
+        List<GuessResult> guessResults = new ArrayList<>();
+        //GuessResult guess1 = game.guess(Answer.createAnswer("1 5 6 7"));
+        GuessResult guess2 = game.guess(Answer.createAnswer("1 2 3 4"));
+        //guessResults.add(guess1);
+        guessResults.add(guess2);
+        assertThat(game.checkStatus(),is("success"));
     }
-    @Test
-    public void should_get_the_0A3B_when_guess_input_is_correct() throws Exception {
-
-        //given
-//        excuteSuccessGuess();
-        GuessResult guess = game.guess(Answer.createAnswer("2 3 4 9"));
-        //when
-        //then
-        assertThat(guess.getResult(), is("0A3B"));
-
-    }
-
-    @Test
-    public void should_get_the_0A4B_when_guess_input_is_correct() throws Exception {
-
-        //given
-//        excuteSuccessGuess();
-        GuessResult guess = game.guess(Answer.createAnswer("2 3 4 1"));
-        //when
-        //then
-        assertThat(guess.getResult(), is("0A4B"));
-
-    }
-    @Test
-    public void should_get_the_2A1B_when_guess_input_is_correct() throws Exception {
-
-        //given
-//        excuteSuccessGuess();
-        GuessResult guess = game.guess(Answer.createAnswer("1 2 7 3"));
-        //when
-        //then
-        assertThat(guess.getResult(), is("2A1B"));
-
-    }
-    @Test
-    public void should_get_the_2A2B_when_guess_input_is_correct() throws Exception {
-
-        //given
-//        excuteSuccessGuess();
-        GuessResult guess = game.guess(Answer.createAnswer("1 2 4 3"));
-        //when
-        //then
-        assertThat(guess.getResult(), is("2A2B"));
-
-    }
-
-    @Test
-    public void should_get_the_2A0B_when_guess_input_is_correct() throws Exception {
-
-        //given
-//        excuteSuccessGuess();
-        GuessResult guess = game.guess(Answer.createAnswer("1 2 7 8"));
-        //when
-        //then
-        assertThat(guess.getResult(), is("2A0B"));
-
-    }
-
-    @Test
-    public void should_get_the_1A2B_when_guess_input_is_correct() throws Exception {
-
-        //given
-//        excuteSuccessGuess();
-        GuessResult guess = game.guess(Answer.createAnswer("1 6 4 3"));
-        //when
-        //then
-        assertThat(guess.getResult(), is("1A2B"));
-
-    }
-
-    @Test
-    public void should_get_the_1A1B_when_guess_input_is_correct() throws Exception {
-
-        //given
-//        excuteSuccessGuess();
-        GuessResult guess = game.guess(Answer.createAnswer("1 6 7 3"));
-        //when
-        //then
-        assertThat(guess.getResult(), is("1A1B"));
-
-    }
-    @Test
-    public void should_get_the_1A3B_when_guess_input_is_correct() throws Exception {
-
-        //given
-//        excuteSuccessGuess();
-        GuessResult guess = game.guess(Answer.createAnswer("1 3 4 2"));
-        //when
-        //then
-        assertThat(guess.getResult(), is("1A3B"));
-
-    }
-
-    @Test
-    public void should_get_the_1A0B_when_guess_input_is_correct() throws Exception {
-
-        //given
-//        excuteSuccessGuess();
-        GuessResult guess = game.guess(Answer.createAnswer("1 5 6 7"));
-        //when
-        //then
-        assertThat(guess.getResult(), is("1A0B"));
-
-    }
-
 }
